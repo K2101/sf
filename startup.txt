@@ -1,0 +1,19 @@
+1. go to each directory and run <npm i> to install all dependencies.
+2. go toeach directory and run <npm run start:dev> to start all services.
+3. wait for a couple munites for connecting to databases or consumer rebalance.
+4. open postman and import the shop endpint that i attached with.
+5. you can read documentation by click the far right icon call Documentation and read that for guiding.
+6. testing the endpoint.
+
+
+if you have problem to connecing with databases.
+1. please create 4 databases call <auth, user, product, order>.
+2. uncomment in app.module.ts and specify your database local endpoint conection.
+
+if you have problem to connecing with kafka.
+1. create topic to your local cluster, all of it need is <USER_CREATED, PRODUCT_CREATED
+PRODUCT_UPDATED,ORDER_CREATED>.
+2. go to main.ts and app.module and speficy your kafka endpoint and can comment ssl or sasl
+(only need  is brokers: ['localhost:9092']).
+
+ 

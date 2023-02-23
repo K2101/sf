@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "80523a24-e6d3-4d26-8970-36ef082dc701",
+		"name": "shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8631299"
+	},
+	"item": [
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "create product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDY5Njc0NTksImRhdGEiOnsiaWQiOiI4NzU5ZWY2Ni0zOWQ4LTQwY2MtOGYyNi04NzNjYTkwM2I0YTAiLCJyb2xlIjoiQURNSU4ifSwiaWF0IjoxNjc3MTQ0Mzc1fQ.P3ytTPSePXajD7jbYQ28-nbTeuTnVKVvVjO80NAWEp0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"price\": 20,\r\n    \"description\": \"some product1\",\r\n    \"amount\": 1,\r\n    \"tag\": \"ETC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"product"
+							]
+						},
+						"description": "## Create product required admin jwt,\n\n## example product\n\n## { \"title\": \"title3\", \"price\": 20, \"description\": \"some product3\", \"amount\": 1, \"tag\": \"ETC\" }"
+					},
+					"response": []
+				},
+				{
+					"name": "get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"product"
+							]
+						},
+						"description": "## Get all products, require admin jwt"
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/product/ac08d515-547b-4bd7-b941-774f85e2b508",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"product",
+								"ac08d515-547b-4bd7-b941-774f85e2b508"
+							]
+						},
+						"description": "## get some product base on id param.\n\n[http://localhost:3002/product/ id>.](http://localhost:3002/product/<product)"
+					},
+					"response": []
+				},
+				{
+					"name": "product update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDY5Njc0NTksImRhdGEiOnsiaWQiOiI4NzU5ZWY2Ni0zOWQ4LTQwY2MtOGYyNi04NzNjYTkwM2I0YTAiLCJyb2xlIjoiQURNSU4ifSwiaWF0IjoxNjc3MTQ0Mzc1fQ.P3ytTPSePXajD7jbYQ28-nbTeuTnVKVvVjO80NAWEp0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/product/b46cc3ec-55a4-4215-8003-fd6985295fba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"product",
+								"b46cc3ec-55a4-4215-8003-fd6985295fba"
+							]
+						},
+						"description": "#### update product require product at param in url,\n\n#### require admin jwt.\n\n#### body of update product all is optional.\n\n1. title\n2. price\n3. description\n4. amount (amount in stock)\n5. tag (require match Tag enum)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1@hotmail.com\",\r\n    \"password\": \"123456\",\r\n    \"username\": \"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "## signup for this route,\n\n## the email must be unique as well as username."
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"email\": \"admin2@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signin"
+							]
+						},
+						"description": "## in this route we can sign either user or admin, the response is jwt."
+					},
+					"response": []
+				},
+				{
+					"name": "admin signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin2@hotmail.com\",\r\n    \"password\": \"123456\",\r\n    \"username\": \"admin2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/admin/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"admin",
+								"signup"
+							]
+						},
+						"description": "## admin signup in this route, for internal update in difference service that require jwt, return nothing.\n\n## you need use same signin route to get jwt."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "update user info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDQzMzkyNjUsImRhdGEiOnsiaWQiOiI5ZGFiNjlhMi0yZDAxLTQ3NjQtOTVmMy00OTE0MGEyMmJhNDgiLCJyb2xlIjoiVVNFUiJ9LCJpYXQiOjE2NzcxNDQwODB9.OCbS1Bgv43Tx6TeOmvBuWjbRu4cfxdgQpsntO0ho0fY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"john\",\r\n    \"surname\": \"doe\",\r\n    \"bio\": \"hi bro!, I am jon doe im the dead man.\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user"
+							]
+						},
+						"description": "## update user info, require jwt login,\n\n## the put body for update is\n\n1.name  \n2.surname  \n3.bio  \n{ \"name\": \"john\", \"surname\": \"doe\", \"bio\": \"hi bro!, I am jon doe im the dead man.\" }"
+					},
+					"response": []
+				},
+				{
+					"name": "get user info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDAzNDgwOTQsImRhdGEiOnsiaWQiOiI4YWVhYmUyOC1jY2YzLTQyMWItODMwMC01YzU1ZTA1NmY4MTAiLCJyb2xlIjoiVVNFUiJ9LCJpYXQiOjE2NzcxNDAwODh9._zQFQXX7p5_AWnrNgwEf1EyPxIHens8NE7X8KBiKBX0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"user"
+							]
+						},
+						"description": "## get user info in this route, require jwt login."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "order create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDQzMzkyNjUsImRhdGEiOnsiaWQiOiI5ZGFiNjlhMi0yZDAxLTQ3NjQtOTVmMy00OTE0MGEyMmJhNDgiLCJyb2xlIjoiVVNFUiJ9LCJpYXQiOjE2NzcxNDQwODB9.OCbS1Bgv43Tx6TeOmvBuWjbRu4cfxdgQpsntO0ho0fY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productsId\": [\"b46cc3ec-55a4-4215-8003-fd6985295fba\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"order"
+							]
+						},
+						"description": "### order create in this route require jwt either user or admin.\n\n### the param body is array of product id,if you want to buy same product with two peices, put the id of particular product two time in array.\n\n### { \"productsId\": \\[\"ac08d515-547b-4bd7-b941-774f85e2b508\"\\]}\n\n### return out ot stock if buying more than in stock available."
+					},
+					"response": []
+				},
+				{
+					"name": "get order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDIyODEwMDMsImRhdGEiOnsiaWQiOiI1N2RlODRkMi0yMWM2LTQ3M2EtOWNhNC1jMTFjYTA2ZWY3OGYiLCJyb2xlIjoiVVNFUiJ9LCJpYXQiOjE2NzcxNDIwMjF9.Tfa7I6qLOZNvC6pLuEn55hiv5qmUIG7si2I1SkqL3tg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3003/order/7def8ed5-466a-4ca4-9309-2fdeff01ebba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"order",
+								"7def8ed5-466a-4ca4-9309-2fdeff01ebba"
+							]
+						},
+						"description": "## Get order detail, if pass admin jwt, you can see all of order require order id param at url.\n\n## if the user your are not login try to query another user's order, not found get return"
+					},
+					"response": []
+				},
+				{
+					"name": "get all order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDY5Njc0NTksImRhdGEiOnsiaWQiOiI4NzU5ZWY2Ni0zOWQ4LTQwY2MtOGYyNi04NzNjYTkwM2I0YTAiLCJyb2xlIjoiQURNSU4ifSwiaWF0IjoxNjc3MTQ0Mzc1fQ.P3ytTPSePXajD7jbYQ28-nbTeuTnVKVvVjO80NAWEp0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3003/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"order"
+							]
+						},
+						"description": "## Get all orders, required Admin jwt."
+					},
+					"response": []
+				},
+				{
+					"name": "update order status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxNDY5Njc0NTksImRhdGEiOnsiaWQiOiI4NzU5ZWY2Ni0zOWQ4LTQwY2MtOGYyNi04NzNjYTkwM2I0YTAiLCJyb2xlIjoiQURNSU4ifSwiaWF0IjoxNjc3MTQ0Mzc1fQ.P3ytTPSePXajD7jbYQ28-nbTeuTnVKVvVjO80NAWEp0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"SUCCESS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/order/status/0cd4663c-70cf-4981-a050-a5bbb1013d9f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"order",
+								"status",
+								"0cd4663c-70cf-4981-a050-a5bbb1013d9f"
+							]
+						},
+						"description": "## Update order status, require admin jwt, body param is status which must be a Status enum."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

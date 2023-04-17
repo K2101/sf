@@ -13,5 +13,5 @@ if you have problem to connecing with databases.
 if you have problem to connecing with kafka.
 1. create topic to your local cluster, all of it need is <USER_CREATED, PRODUCT_CREATED
 PRODUCT_UPDATED,ORDER_CREATED>.
-2. go to main.ts and app.module and speficy your kafka endpoint and can comment ssl or sasl
+2.go to main.ts and app.module and speficy your kafka endpoint and can comment ssl or sasl
 (only need is brokers: ['localhost:9092']).

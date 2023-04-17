@@ -9,14 +9,14 @@ import { ClientKafka } from '@nestjs/microservices/client';
 import { InjectRepository } from '@nestjs/typeorm';
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { Repository } from 'typeorm';
-import { promisify } from 'util';
+import { promisify as _promisify, promisify } from 'util';
 import { AuthEntity } from './app.entity';
 import { Role } from './dto/create-user.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { sign as _sign } from 'jsonwebtoken';
 
-const scrypt = promisify(_scrypt);
 const sign = promisify(_sign);
+const scrypt = promisify(_scrypt);
 
 @Injectable()
 export class AppService {
@@ -138,6 +138,7 @@ export class AppService {
       console.log(err);
     }
   }
+
   async hash(password: string, salt: string) {
     const hash = (await scrypt(password, salt, 32)) as Buffer;
     const result = salt + '.' + hash.toString('hex');

@@ -11,13 +11,13 @@ async function bootstrap() {
       transport: Transport.KAFKA,
       options: {
         client: {
-          brokers: ['pkc-1dkx6.ap-southeast-1.aws.confluent.cloud:9092'],
+          brokers: ['pkc-ldvr1.asia-southeast1.gcp.confluent.cloud:9092'],
           ssl: true,
           sasl: {
             mechanism: 'plain',
-            username: 'QF3BLWOX3UWI3WL2',
+            username: 'JOWQ2EBHP5ODPEAR',
             password:
-              'kXgINuX3c7y2nnl4h53OKege7FRMHvuAx1bcbEwaSTD/jMh1B6Ej7B+E8+eEFq71',
+              'u3E8l774vungMKsrX39i77RNLScporfGlhkDFhasn7Kdx/0At0CdaJGuqAO9WtG0',
           },
         },
         consumer: {
